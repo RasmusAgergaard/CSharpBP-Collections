@@ -74,6 +74,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Success, actual.Success);
             Assert.AreEqual(expected.Message, actual.Message);
         }
+        /*
         [TestMethod()]
         public void PlaceOrder_3Parameters()
         {
@@ -93,6 +94,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Success, actual.Success);
             Assert.AreEqual(expected.Message, actual.Message);
         }
+        */
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
