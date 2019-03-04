@@ -16,6 +16,7 @@ namespace Acme.Biz
         #region Constructors
         public Product()
         {
+
         }
         public Product(int productId,
                         string productName,
@@ -84,8 +85,22 @@ namespace Acme.Biz
         /// </summary>
         /// <param name="markupPercent">Percent used to mark up the cost.</param>
         /// <returns></returns>
-        public decimal CalculateSuggestedPrice(decimal markupPercent) =>
-             this.Cost + (this.Cost * markupPercent / 100);
+        public OperationResult<decimal> CalculateSuggestedPrice(decimal markupPercent)
+        {
+            var message = "";
+            if (markupPercent <= 0M)
+            {
+                message = "Ivalid";
+            }
+            else if (markupPercent < 10)
+            {
+                message = "Less than recomended";
+            }
+            var value = this.Cost + (this.Cost * markupPercent / 100);
+
+            var operationResultDecimal = new OperationResult<decimal>(value, message);
+            return operationResultDecimal;
+        }
 
         public override string ToString()
         {
